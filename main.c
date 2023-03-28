@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 15:09:13 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/03/28 16:45:58 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/03/28 18:23:09 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,34 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 int main()
 {
-	t_vars vars;
-	t_data img;
-
+	t_vars	vars;
+	t_data	img;
+	int x = 100;
+	int y = 200;
+	int xw;
+	int yz;
+	
 	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 1000, 580, "Hello world!");
+	vars.win = mlx_new_window(vars.mlx, 1000, 580, "Fract-ol!");
 	img.img = mlx_new_image(vars.mlx, 1000, 580);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								&img.endian);
 	my_mlx_pixel_put(&img, 0, 0, 0x00FF0000);
-	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 500, 520);
-	mlx_key_hook(vars.win, key_hook, &vars);
-	mlx_mouse_hook(vars.win, mouse, &vars);
+	
+	while (x < 200)
+	{
+		mlx_put_image_to_window(vars.mlx, vars.win, img.img, x, y);
+		x++;
+		while (y < 300)
+		{
+			mlx_put_image_to_window(vars.mlx, vars.win, img.img, x, y);
+			y++;
+		}
+	}
+	
+	//mlx_key_hook(vars.win, key_hook, &vars);
+	//mlx_mouse_hook(vars.win, mouse, &vars);
 	mlx_hook(vars.win, 17, 1L<<0, close_win, &vars);
+	
 	mlx_loop(vars.mlx);
 }
