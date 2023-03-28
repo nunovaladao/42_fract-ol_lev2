@@ -14,11 +14,23 @@
 # define FRACTOL_H
 
 # include "libft/libft.h"
+# include "mlx-linux/mlx.h"
 # include <math.h>
 
+// Inicializar a janela;
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
 
-
-
+// Events;
+typedef struct	s_vars {
+	void	*mlx;
+	void	*win;
+}				t_vars;
 
 
 #endif
