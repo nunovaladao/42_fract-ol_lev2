@@ -6,24 +6,25 @@
 #    By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 17:52:53 by nsoares-          #+#    #+#              #
-#    Updated: 2023/03/24 15:14:32 by nsoares-         ###   ########.fr        #
+#    Updated: 2023/03/25 16:58:08 by nsoares-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g0 
+CFLAGS = -Wall -Wextra -Werror -g  
 RM = rm -rf
 LIBFT = ./libft/libft.a
+
+# __________MLX_______________
+
+MLX = -L ./mlx-linux -lmlx -Ilmlx -lXext -lX11
 
 # _________SOURCES____________
 
 SOURCE_FILES = main.c \
-				errors/check_arg_errors.c \
-				stack/init_stack.c stack/free_operations.c\
-				operations/swap.c operations/push.c operations/rotate.c operations/reverse.c \
-				sort/sort_utils.c sort/sort_utils2.c sort/sort_small.c sort/sort_big.c 
+				 
 				
 
 OBJS_FILES = $(SOURCE_FILES:.c=.o)
@@ -52,7 +53,7 @@ RE          =   echo "\n$(BOLD_YELLOW)Re: $(NO_COLOR)Compilation restarted \n"
 all: compilation_start $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS_FILES)
-		$(CC) $(CFLAGS) $(SOURCE_FILES) $(LIBFT) -o $(NAME)
+		$(CC) $(CFLAGS) -lm $(SOURCE_FILES) $(LIBFT) $(MLX) $(MLX_L) -o $(NAME)
 	@ $(FRACTOL_READY)
 
 compilation_start:
@@ -60,6 +61,9 @@ compilation_start:
 
 $(LIBFT):
 	@ $(MAKE) -C ./libft
+
+$(MLX_L): 
+	@ $(MAKE) - C ./mlx-linux
 
 clean:
 	@ $(RM) $(OBJS_FILES)
