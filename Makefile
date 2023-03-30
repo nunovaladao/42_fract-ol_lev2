@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+         #
+#    By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 17:52:53 by nsoares-          #+#    #+#              #
-#    Updated: 2023/03/25 16:58:08 by nsoares-         ###   ########.fr        #
+#    Updated: 2023/03/30 16:29:54 by nuno             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,9 @@ MLX = -L ./mlx-linux -lmlx -Ilmlx -lXext -lX11
 # _________SOURCES____________
 
 SOURCE_FILES = main.c \
+				rectangle.c \
+				init_mlx.c \
+				hook.c 
 				 
 				
 
