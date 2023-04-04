@@ -1,31 +1,30 @@
 #include "fractol.h"
 
-void do_rectangle(t_vars vars, t_data img)
+void do_rectangle(t_vars *vars, t_data *img)
 {
-    int x = 100;
-    int y = 100;
+    int y = 200;
 
-    while (y < 200)
-	{
-		mlx_put_image_to_window(vars.mlx, vars.win, img.img, x, y);
-		y++;
-	}
-    while (x < 200)
+    while (y <= 300)
     {
-        mlx_put_image_to_window(vars.mlx, vars.win, img.img, x, y);
-		x++;
+        y++;
+        int x = 200;
+        while (x <= 300)
+        {
+            mlx_put_image_to_window(vars->mlx, vars->win, img->img, x, y);
+            x++;
+        }
     }
-    x = 200;
-    y = 100;
-    while (y < 200)
+
+    int a = 200;
+    
+    while (a <= 300)
     {
-        mlx_put_image_to_window(vars.mlx, vars.win, img.img, x, y);
-		y++;
-    }
-    x = 100;
-    while (x < 200)
-    {
-        mlx_put_image_to_window(vars.mlx, vars.win, img.img, x, y);
-		x++;
+        a++;
+        int b = 400;
+        while (b <= 500)
+        {
+            mlx_put_image_to_window(vars->mlx, vars->win, img->img, b, a);
+            b++;
+        }
     }
 }

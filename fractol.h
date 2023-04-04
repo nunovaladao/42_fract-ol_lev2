@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:44:27 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/03/30 16:29:11 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/05 00:02:40 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <math.h>
 
 # define ESC 65307
+# define SCROLL_UP 5
+# define SCROLL_DOWN 4
 
 // Inicializar a janela;
 typedef struct	s_data {
@@ -32,11 +34,15 @@ typedef struct	s_data {
 typedef struct	s_vars {
 	void	*mlx;
 	void	*win;
+	t_data auxil;
+	t_data img;
+	double scale;
 }				t_vars;
 
-void do_rectangle(t_vars vars, t_data img);
+void do_rectangle(t_vars *vars, t_data *img);
 void init_mlx(t_vars *vars);
 void init_window(t_vars *vars, t_data *img);
 int hook_events(t_vars *vars);
+int check_args(int ac, char **av);
 
 #endif

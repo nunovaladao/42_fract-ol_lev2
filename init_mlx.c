@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:08:40 by nuno              #+#    #+#             */
-/*   Updated: 2023/03/30 16:00:31 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/04 12:07:50 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,5 @@ void init_window(t_vars *vars, t_data *img)
         free(img->addr);
         exit(1);
     }
-	my_mlx_pixel_put(img, 0, 0, 0x00FF0000);
+	my_mlx_pixel_put(img, 0, 0, 0x0000FF00);
 }
