@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:08:40 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/04 12:07:50 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/08 13:14:41 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void init_mlx(t_vars *vars)
         solve_errors("Inicialize error!");
         exit(1);
     }
-    vars->win = mlx_new_window(vars->mlx, 1000, 580, "Fract-ol!");
+    vars->win = mlx_new_window(vars->mlx, vars->height_win, vars->width_win, "Fract-ol!");
     if (!vars->win)
     {
         solve_errors("Inicialize window error!");
@@ -41,7 +41,7 @@ void init_mlx(t_vars *vars)
 
 void init_window(t_vars *vars, t_data *img)
 {
-    img->img = mlx_new_image(vars->mlx, 1000, 580);
+    img->img = mlx_new_image(vars->mlx, vars->height_win, vars->width_win);
     if (!img->img)
     {
         solve_errors("Init image error!");
