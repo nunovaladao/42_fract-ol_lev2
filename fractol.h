@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:44:27 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/04/10 17:18:25 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/12 00:06:38 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ typedef struct	s_mandelbrot
 }				t_mandelbrot;
 
 void do_rectangle(t_vars *vars, t_data *img);
-void init_mlx(t_vars *vars);
-void init_window(t_vars *vars, t_data *img);
+void init_mlx(t_vars *vars, t_data *img);
 int hook_events(t_vars *vars);
 int check_args(int ac, char **av, t_vars *vars);
 void	draw_mandelbrot(t_mandelbrot *m, t_vars *vars, t_data *img);

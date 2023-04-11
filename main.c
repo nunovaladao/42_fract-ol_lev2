@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 15:09:13 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/04/10 16:52:30 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/12 00:06:59 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ int main(int ac, char **av)
 	
 	check_args(ac, av, &vars);
 	
-	init_mlx(&vars);
-	init_window(&vars, &img);
-	vars.scale = 1.0;
+	init_mlx(&vars, &img);
+	//vars.scale = 1.0;
 	
 	draw_mandelbrot(&mandel, &vars, &img);
 	

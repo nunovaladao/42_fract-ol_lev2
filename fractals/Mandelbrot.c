@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:07:43 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/10 18:01:31 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/11 23:39:18 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,17 @@ void	draw_mandelbrot(t_mandelbrot *m, t_vars *vars, t_data *img)
     m->x = 0;
     while (m->x < I_WIDTH)
     {
-      mandelbrot_iteration((t_complex){m->min.r + m->x * m->factor.r,
+      int iter = mandelbrot_iteration((t_complex){m->min.r + m->x * m->factor.r,
       							m->min.i + m->y * m->factor.i}, m->max_iter);
-      /* if (iter == m->max_iter)
+      int color;
+      if (iter == m->max_iter)
         color = 0;
       else
-        color = iter * 255 / m->max_iter; */
+        color = iter * 255 / m->max_iter; 
+      *(unsigned int *)(img->addr + (m->y * img->line_length + m->x * (img->bits_per_pixel / 8))) = color;
       m->x++;
     }
     m->y++;
   }
-  mlx_put_image_to_window(vars->mlx, vars->win, img->img, m->x, m->y);
+  mlx_put_image_to_window(vars->mlx, vars->win, img->img, 0, 0);
 }
