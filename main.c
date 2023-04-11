@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 15:09:13 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/04/09 00:17:01 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/10 16:52:30 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int main(int ac, char **av)
 {
 	t_vars	vars;
 	t_data	img;
+	t_mandelbrot mandel;
 	
 	check_args(ac, av, &vars);
 	
@@ -23,7 +24,7 @@ int main(int ac, char **av)
 	init_window(&vars, &img);
 	vars.scale = 1.0;
 	
-	do_rectangle(&vars, &img);
+	draw_mandelbrot(&mandel, &vars, &img);
 	
 	hook_events(&vars);
 	mlx_loop(vars.mlx);

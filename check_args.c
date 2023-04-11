@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:24:27 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/09 00:28:44 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/10 17:02:29 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int input_window(char **av, char x)
             break;
         }
     }
+    if (!size_win)
+        return (0);
     if ((x = 'w') && (size_win > 0 && size_win <= 1080))
         return (size_win);
     else if ((x = 'h') && (size_win > 0 && size_win <= 1980))
