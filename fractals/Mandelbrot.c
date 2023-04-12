@@ -3,53 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   Mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:07:43 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/11 23:39:18 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/12 15:39:38 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
-int	mandelbrot_iteration(t_complex c, int max_iter)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-  t_complex	z;
-  double	temp;
-  int		iter;
+	char	*dst;
 
-  z.r = 0;
-  z.i = 0;
-  iter = 0;
-  while (z.r * z.r + z.i * z.i <= 4 && iter < max_iter)
-  {
-    temp = z.r * z.r - z.i * z.i + c.r;
-    z.i = 2 * z.r * z.i + c.i;
-    z.r = temp;
-    iter++;
-  }
-  return (iter);
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
 }
 
-void	draw_mandelbrot(t_mandelbrot *m, t_vars *vars, t_data *img)
+void set_mandel(t_data *img, int max_iter)
 {
-  m->y = 0;
-  while (m->y < I_HEIGHT)
+  //t_mandelbrot m;
+  int row;
+  int col;
+
+  row = 0;
+  col = 0;
+  while (row < I_HEIGHT)
   {
-    m->x = 0;
-    while (m->x < I_WIDTH)
+    while (col < I_WIDTH)
     {
-      int iter = mandelbrot_iteration((t_complex){m->min.r + m->x * m->factor.r,
-      							m->min.i + m->y * m->factor.i}, m->max_iter);
-      int color;
-      if (iter == m->max_iter)
-        color = 0;
+      double c_re = (col - I_WIDTH / 2.0) * 4.0 / I_WIDTH;
+      double c_im = (row - I_HEIGHT / 2.0) * 4.0 / I_HEIGHT;
+      double x = 0, y = 0;
+      int iter = 0;
+      while (x * x + y * y <= 4 && iter < max_iter)
+      {
+        double tmp = x * x - y * y + c_re;
+        y = 2 * x * y + c_im;
+        x = tmp;
+        iter++;
+      }
+      if (iter < max_iter)
+        my_mlx_pixel_put(img, col, row, 0x000000);
       else
-        color = iter * 255 / m->max_iter; 
-      *(unsigned int *)(img->addr + (m->y * img->line_length + m->x * (img->bits_per_pixel / 8))) = color;
-      m->x++;
+        my_mlx_pixel_put(img, col, row, 0xFFFFFF);
+      col++; 
     }
-    m->y++;
+    row++;
   }
-  mlx_put_image_to_window(vars->mlx, vars->win, img->img, 0, 0);
 }

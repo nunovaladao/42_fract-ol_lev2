@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:44:27 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/04/12 00:06:38 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/12 15:49:11 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include "mlx-linux/mlx.h"
 # include <math.h>
 
-# define I_WIDTH 600
-# define I_HEIGHT 600
+# define I_WIDTH 1920
+# define I_HEIGHT 1080
 
 # define ESC 65307
 # define SCROLL_UP 5
@@ -44,26 +44,20 @@ typedef struct	s_vars {
 	int width_win;
 }				t_vars;
 
-typedef struct	s_complex
-{
-  double		r;
-  double		i;
-}				t_complex;
-
 typedef struct	s_mandelbrot
 {
-	int x;
-	int y;
-	t_complex	min;
-	t_complex	max;
-	t_complex	factor;
-	int			max_iter;
+	double x;
+	double y;
+	double temp;
+	int	iter;
+	int max;
 }				t_mandelbrot;
 
 void do_rectangle(t_vars *vars, t_data *img);
 void init_mlx(t_vars *vars, t_data *img);
 int hook_events(t_vars *vars);
 int check_args(int ac, char **av, t_vars *vars);
-void	draw_mandelbrot(t_mandelbrot *m, t_vars *vars, t_data *img);
+void set_mandel(t_data *img, int max_iter);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 #endif
