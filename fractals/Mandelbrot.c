@@ -6,24 +6,17 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:07:43 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/13 19:00:23 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/13 22:24:13 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
-
 void init_mandel(t_mandelbrot *m, t_vars *vars) 
 {
   m->width = vars->width_win;
   m->height = vars->height_win;
+  m->resulotion = 0;
   m->zoom = 1;
   m->iter = 25;
   m->min_r = -2;
@@ -75,9 +68,9 @@ void set_mandel(t_mandelbrot m, t_data *img, t_vars *vars)
     {
       pr = m.min_r + (double)x * (m.max_r - m.min_r) / m.width;
       if (iter_mandel(m, pr, pi) == 0)
-        my_mlx_pixel_put(img, x, y, 0x000000);
-      else
         my_mlx_pixel_put(img, x, y, 0xFFFFFF);
+      else
+        my_mlx_pixel_put(img, x, y, create_trgb(0, 0, 0, 0));
     }
   }
   mlx_put_image_to_window(vars->mlx, vars->win, img->img, 0, 0);

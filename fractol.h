@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:44:27 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/04/13 18:45:02 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/13 21:59:20 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,17 @@
 # define SCROLL_UP 5
 # define SCROLL_DOWN 4
 
+typedef struct s_color 
+{
+	int r;
+	int g;
+	int b;
+	int t;
+}				t_color;
+
 typedef struct	s_mandelbrot
 {
+	t_color *color;
 	double zoom;
 	double max_i;
 	double min_i;
@@ -35,12 +44,12 @@ typedef struct	s_mandelbrot
 	int	iter;
 	int height;
 	int width;
-	int color;
 	unsigned int count;
 }				t_mandelbrot;
 
 // Inicializar a janela;
-typedef struct	s_data {
+typedef struct	s_data 
+{
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -49,7 +58,8 @@ typedef struct	s_data {
 }				t_data;
 
 // Events;
-typedef struct	s_vars {
+typedef struct	s_vars 
+{
 	void	*mlx;
 	void	*win;
 	t_data auxil;
@@ -60,11 +70,16 @@ typedef struct	s_vars {
 	int width_win;
 }				t_vars;
 
-void do_rectangle(t_vars *vars, t_data *img);
 void init_mlx(t_vars *vars, t_data *img);
 int hook_events(t_vars *vars);
 int check_args(int ac, char **av, t_vars *vars);
 void set_mandel(t_mandelbrot m, t_data *img, t_vars *vars);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int	create_trgb(int t, int r, int g, int b);
+
+int color(t_mandelbrot *m);
+int red(int val_color);
+int blue(int val_color);
+int green(int val_color);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 16:04:05 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/13 13:57:47 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/13 22:16:16 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int mouse_hook(int keycode, t_vars *vars)
         return (0);
     vars->scale = scale;
     mlx_clear_window(vars->mlx, vars->win);
-    //do_rectangle(vars, img);
 	return (0);
 }
 
