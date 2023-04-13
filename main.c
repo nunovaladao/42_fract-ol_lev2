@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 15:09:13 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/04/12 15:49:38 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/04/13 15:02:36 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ int main(int ac, char **av)
 {
 	t_vars	vars;
 	t_data	img;
-	
+	t_mandelbrot m;
 	
 	check_args(ac, av, &vars);
 	
 	init_mlx(&vars, &img);
 	//vars.scale = 1.0;
 	
-	set_mandel(&img, 1000);
+	set_mandel(m, &img, &vars);
 	//do_rectangle(&vars, &img);
 	
 	hook_events(&vars);

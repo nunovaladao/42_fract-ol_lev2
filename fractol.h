@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:44:27 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/04/12 15:49:11 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/04/13 18:45:02 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,27 @@
 # include "mlx-linux/mlx.h"
 # include <math.h>
 
-# define I_WIDTH 1920
-# define I_HEIGHT 1080
+# define I_WIDTH 700
+# define I_HEIGHT 700
 
 # define ESC 65307
 # define SCROLL_UP 5
 # define SCROLL_DOWN 4
+
+typedef struct	s_mandelbrot
+{
+	double zoom;
+	double max_i;
+	double min_i;
+	double max_r;
+	double min_r;
+	int resulotion;
+	int	iter;
+	int height;
+	int width;
+	int color;
+	unsigned int count;
+}				t_mandelbrot;
 
 // Inicializar a janela;
 typedef struct	s_data {
@@ -39,25 +54,17 @@ typedef struct	s_vars {
 	void	*win;
 	t_data auxil;
 	t_data img;
+	t_mandelbrot m;
 	double scale;
 	int height_win;
 	int width_win;
 }				t_vars;
 
-typedef struct	s_mandelbrot
-{
-	double x;
-	double y;
-	double temp;
-	int	iter;
-	int max;
-}				t_mandelbrot;
-
 void do_rectangle(t_vars *vars, t_data *img);
 void init_mlx(t_vars *vars, t_data *img);
 int hook_events(t_vars *vars);
 int check_args(int ac, char **av, t_vars *vars);
-void set_mandel(t_data *img, int max_iter);
+void set_mandel(t_mandelbrot m, t_data *img, t_vars *vars);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 #endif

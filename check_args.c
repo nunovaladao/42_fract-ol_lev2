@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:24:27 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/10 17:02:29 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/13 15:58:31 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ int input_window(char **av, char x)
     }
     if (!size_win)
         return (0);
-    if ((x = 'w') && (size_win > 0 && size_win <= 1080))
+    if ((x = 'h') && (size_win > 0 && size_win <= 1080))
         return (size_win);
-    else if ((x = 'h') && (size_win > 0 && size_win <= 1980))
+    else if ((x = 'w') && (size_win > 0 && size_win <= 1980))
         return (size_win);
     else
     {
         ft_printf("Put the right window size!\n\n");
-        ft_printf("width: 0 - 1080 and height: 0 - 1980\n");
+        ft_printf("width: 0 - 1980 and height: 0 - 1080\n");
         exit(EXIT_FAILURE);
     }
     return (0);
@@ -59,7 +59,7 @@ void display_mensg(int options)
     {
         ft_printf("Run:\n\n");
         ft_printf("  1) ./fractol <fractal>\n");
-        ft_printf("  2) ./fractol <fractal> size_width size_height\n\n");
+        ft_printf("  2) ./fractol <fractal> size_height size_width\n\n");
         ft_printf("Fractal options:\n\n");
         ft_printf("  - Julia\n  - Mandelbrot\n");
     }
