@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 19:07:53 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/13 21:37:30 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/14 11:28:28 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,9 @@ int	create_trgb(int t, int r, int g, int b)
 
 int color(t_mandelbrot *m)
 {
-    int val_color;
-
-    val_color = m->count * 15;
-    m->color->r = red(val_color);
-    m->color->g = green(val_color);
-    m->color->b = blue(val_color);
-
-    return (create_trgb(0, m->color->r, m->color->g, m->color->b));
+    int r = (m->count * 3) % 256;
+    int g = (m->count * 7) % 256;
+    int b = (m->count * 9) % 256;
+    
+    return (create_trgb(0, r, g, b));
 }
