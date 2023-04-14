@@ -3,10 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   Julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:07:33 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/12 09:34:24 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/04/14 22:37:35 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../fractol.h"
+
+void set_julia(t_julia *j, t_data *img)
+{
+    int x = 0;
+    int y = 0;
+    j->count = 0;
+
+    my_mlx_pixel_put(img, x, y, 0xFFFFFF);
+}

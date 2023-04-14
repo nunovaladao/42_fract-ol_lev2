@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:07:43 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/14 11:46:18 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/14 15:01:33 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void init_mandel(t_mandelbrot *m, t_vars *vars)
   m->zoom = 1;
   m->iter = 100;
   m->min_r = -2;
-  m->max_r = m->min_r * -1 * vars->width_win / vars->height_win;
+  m->max_r = m->min_r * -1 * m->width / m->height;
   m->min_i = -2;
-  m->max_i = m->min_i * -1 * vars->height_win / vars->width_win;
+  m->max_i = m->min_i * -1 * m->height / m->width;
 }
 
 int iter_mandel(t_mandelbrot *m, double cr, double ci)
