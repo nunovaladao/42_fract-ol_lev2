@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:44:27 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/04/14 22:52:43 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/15 16:49:15 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 typedef struct	s_julia
 {
 	double zoom;
+	double shift_x;
+	double shift_y;
 	double max_i;
 	double min_i;
 	double max_r;
@@ -83,8 +85,7 @@ typedef struct	s_vars
 	int fractal;
 }				t_vars;
 
-t_vars init(void);
-int check_args(int ac, char **av, t_vars *vars/* , t_data *img, t_mandelbrot *m, t_julia *j */);
+int check_args(int ac, char **av, t_vars *vars);
 void choose_fractal(char **av, t_vars *vars);
 int run_fractal(t_vars *vars, t_data *img, t_mandelbrot *m, t_julia *j);
 
@@ -92,11 +93,14 @@ void init_mlx(char **av, t_vars *vars, t_data *img);
 int hook_events(t_vars *vars);
 
 void set_mandel(t_mandelbrot *m, t_data *img, t_vars *vars);
-void set_julia(t_julia *j, t_data *img);
+void set_julia(t_julia *j, t_data *img, t_vars *vars);
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int	create_trgb(int t, int r, int g, int b);
-int color(t_mandelbrot *m);
+int color_mandel(t_mandelbrot *m);
+int color_julia(t_julia *j);
+
+int is_number(char *str);
 
 void mlx_exit(t_vars *vars);
 

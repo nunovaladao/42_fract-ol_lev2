@@ -3,14 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:24:27 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/14 22:58:23 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/15 16:11:46 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+void display_mensg(int options)
+{
+    if (options == 0)
+    {
+        ft_printf("Run:\n\n");
+        ft_printf("  1) ./fractol <fractal>\n");
+        ft_printf("  2) ./fractol <fractal> size_height size_width\n\n");
+        ft_printf("Fractal options:\n\n");
+        ft_printf("  - Julia\n  - Mandelbrot\n");
+        exit(EXIT_FAILURE);
+    }
+    if (options == 1)
+    {
+        ft_printf("Options:\n");
+        ft_printf("\t- Click on ESC or on the cross for leave!\n");
+        ft_printf("\t- You also can do ZOOM_IN and ZOOM_OUT!\n");
+    }
+    if (options == 2)
+    {
+        ft_printf("Put the right window size!\nPut only numbers!\n\n");
+        ft_printf("width: 0 - 1980 and height: 0 - 1080\n");
+        exit(EXIT_FAILURE);
+    }
+}
 
 int input_window(char **av, char x)
 {
@@ -29,16 +54,11 @@ int input_window(char **av, char x)
     }
     if (!size_win)
         return (0);
-    if ((x = 'h') && (size_win > 0 && size_win <= 1080))
+    if ((x = 'w') && (i == 2) && (size_win > 0 && size_win <= 1980))
         return (size_win);
-    else if ((x = 'w') && (size_win > 0 && size_win <= 1980))
+    if ((x = 'h') && (i == 3) && (size_win > 0 && size_win <= 1080))
         return (size_win);
-    else
-    {
-        ft_printf("Put the right window size!\n\n");
-        ft_printf("width: 0 - 1980 and height: 0 - 1080\n");
-        exit(EXIT_FAILURE);
-    }
+    display_mensg(2);
     return (0);
 }
 
@@ -53,27 +73,9 @@ int window_size(char **av, t_vars *vars)
     return (0);
 }
 
-void display_mensg(int options)
-{
-    if (options == 0)
-    {
-        ft_printf("Run:\n\n");
-        ft_printf("  1) ./fractol <fractal>\n");
-        ft_printf("  2) ./fractol <fractal> size_height size_width\n\n");
-        ft_printf("Fractal options:\n\n");
-        ft_printf("  - Julia\n  - Mandelbrot\n");
-    }
-    if (options == 1)
-    {
-        ft_printf("Options:\n");
-        ft_printf("\t- Click on ESC or on the cross for leave!\n");
-        ft_printf("\t- You also can do ZOOM_IN and ZOOM_OUT!\n");
-    }
-}
-
 int check_args(int ac, char **av, t_vars *vars)
 {
-    if (ac == 1 || ac == 3)
+    if (ac == 1 || ac == 3 || ac > 4)
     {
         display_mensg(0);
         exit(0);
@@ -83,13 +85,16 @@ int check_args(int ac, char **av, t_vars *vars)
         if (ft_strcmp(av[1], "Julia") == 0 || ft_strcmp(av[1], "Mandelbrot") == 0)
         {
             window_size(av, vars);
+            if (ac == 4 && is_number(av[2]) == 0 && is_number(av[3]) == 0)
+                window_size(av, vars);
+            else if (ac == 4)
+                display_mensg(2);
             display_mensg(1);
         }
         else
         {
             ft_printf("Error, put the right name!\n\n");
             display_mensg(0);
-            exit(0); 
         }
     }
     return (0);

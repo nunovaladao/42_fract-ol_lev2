@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 19:07:53 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/14 11:28:28 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/15 15:50:18 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,20 @@ int	create_trgb(int t, int r, int g, int b)
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-int color(t_mandelbrot *m)
+int color_mandel(t_mandelbrot *m)
 {
     int r = (m->count * 3) % 256;
     int g = (m->count * 7) % 256;
     int b = (m->count * 9) % 256;
+    
+    return (create_trgb(0, r, g, b));
+}
+
+int color_julia(t_julia *j)
+{
+    int r = (j->count * 3) % 256;
+    int g = (j->count * 7) % 256;
+    int b = (j->count * 9) % 256;
     
     return (create_trgb(0, r, g, b));
 }

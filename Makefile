@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+         #
+#    By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 17:52:53 by nsoares-          #+#    #+#              #
-#    Updated: 2023/04/14 22:36:43 by nuno             ###   ########.fr        #
+#    Updated: 2023/04/15 15:13:51 by nsoares-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,6 @@ SOURCE_FILES = main.c \
 				fractals/Julia.c \
 				colors.c \
 				fract_utils.c 
-				
-				 
 				
 
 OBJS_FILES = $(SOURCE_FILES:.c=.o)
