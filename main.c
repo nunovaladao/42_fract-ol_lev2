@@ -20,12 +20,9 @@ int	main(int ac, char **av)
 	t_julia	j;
 
 	check_args(ac, av, &vars);
-
 	init_mlx(av, &vars, &img);
-
-    choose_fractal(av, &vars);
+	choose_fractal(av, &vars);
 	run_fractal(&vars, &img, &m, &j);
-
 	hook_events(&vars);
 	mlx_loop(vars.mlx);
 }

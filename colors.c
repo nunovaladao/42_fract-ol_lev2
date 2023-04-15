@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 19:07:53 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/15 15:50:18 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/04/15 18:33:59 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	char	*dst;
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
 
 int	create_trgb(int t, int r, int g, int b)
@@ -25,20 +25,26 @@ int	create_trgb(int t, int r, int g, int b)
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-int color_mandel(t_mandelbrot *m)
+int	color_mandel(t_mandelbrot *m)
 {
-    int r = (m->count * 3) % 256;
-    int g = (m->count * 7) % 256;
-    int b = (m->count * 9) % 256;
-    
-    return (create_trgb(0, r, g, b));
+	int	r;
+	int	g;
+	int	b;
+
+	r = (m->count * 3) % 256;
+	g = (m->count * 7) % 256;
+	b = (m->count * 9) % 256;
+	return (create_trgb(0, r, g, b));
 }
 
-int color_julia(t_julia *j)
+int	color_julia(t_julia *j)
 {
-    int r = (j->count * 3) % 256;
-    int g = (j->count * 7) % 256;
-    int b = (j->count * 9) % 256;
-    
-    return (create_trgb(0, r, g, b));
+	int	r;
+	int	g;
+	int	b;
+
+	r = (j->count * 3) % 256;
+	g = (j->count * 7) % 256;
+	b = (j->count * 9) % 256;
+	return (create_trgb(0, r, g, b));
 }

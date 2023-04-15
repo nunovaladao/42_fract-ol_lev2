@@ -12,34 +12,34 @@
 
 #include "fractol.h"
 
-int mouse_hook(int keycode, t_vars *vars)
+int	mouse_hook(int keycode, t_vars *vars)
 {
-    //t_data *img;
-    double scale;
-    double zoom = 1.1;
+	//t_data *img;
+	double	scale;
+	double	zoom = 1.1;
 
-    if (keycode == SCROLL_UP)
-        scale = vars->scale * zoom;
-    else if (keycode == SCROLL_DOWN)
-        scale = vars->scale / zoom;
-    else 
-        return (0);
-    vars->scale = scale;
-    mlx_clear_window(vars->mlx, vars->win);
+	if (keycode == SCROLL_UP)
+		scale = vars->scale * zoom;
+	else if (keycode == SCROLL_DOWN)
+		scale = vars->scale / zoom;
+	else
+		return (0);
+	vars->scale = scale;
+	mlx_clear_window(vars->mlx, vars->win);
 	return (0);
 }
 
-int keyboard_hook(int keycode, t_vars *vars)
+int	keyboard_hook(int keycode, t_vars *vars)
 {
-    if (keycode == ESC)
-        mlx_exit(vars);
-    return(0);
+	if (keycode == ESC)
+		mlx_exit(vars);
+	return (0);
 }
 
-int hook_events(t_vars *vars)
+int	hook_events(t_vars *vars)
 {
 	mlx_hook(vars->win, 17, 0, (void *)mlx_exit, vars);
-    mlx_key_hook(vars->win, &keyboard_hook, vars);
+	mlx_key_hook(vars->win, &keyboard_hook, vars);
 	mlx_mouse_hook(vars->win, &mouse_hook, vars);
-    return(0);
+	return (0);
 }
