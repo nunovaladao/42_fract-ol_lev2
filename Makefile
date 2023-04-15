@@ -6,7 +6,7 @@
 #    By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 17:52:53 by nsoares-          #+#    #+#              #
-#    Updated: 2023/04/15 15:13:51 by nsoares-         ###   ########.fr        #
+#    Updated: 2023/04/15 18:07:35 by nsoares-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ RE          =   echo "\n$(BOLD_YELLOW)Re: $(NO_COLOR)Compilation restarted \n"
 all: compilation_start $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS_FILES)
-		$(CC) $(CFLAGS) -lm $(SOURCE_FILES) $(LIBFT) $(MLX) $(MLX_L) -o $(NAME)
+		$(CC) $(CFLAGS) $(SOURCE_FILES) $(LIBFT) $(MLX) $(MLX_L) -o $(NAME)
 	@ $(FRACTOL_READY)
 
 compilation_start:

@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:24:27 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/15 16:11:46 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/04/15 17:53:26 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void display_mensg(int options)
     {
         ft_printf("Run:\n\n");
         ft_printf("  1) ./fractol <fractal>\n");
-        ft_printf("  2) ./fractol <fractal> size_height size_width\n\n");
+        ft_printf("  2) ./fractol <fractal> size_width size_height\n\n");
         ft_printf("Fractal options:\n\n");
         ft_printf("  - Julia\n  - Mandelbrot\n");
-        exit(EXIT_FAILURE);
+        exit(EXIT_SUCCESS);
     }
     if (options == 1)
     {
