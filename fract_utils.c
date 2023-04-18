@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   fract_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:16:00 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/15 18:24:11 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/04/18 21:36:41 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+void zoom_fractal(t_vars *fractal, int x, int y, double zoom)
+{
+    (void)x;
+	(void)y;
+	fractal->center_r = fractal->min_r - fractal->max_r;
+	fractal->center_i = fractal->max_i - fractal->min_i;
+	fractal->max_r = fractal->max_r + (fractal->center_r - zoom * fractal->center_r) / 2;
+	fractal->min_r = fractal->max_r + zoom * fractal->center_r;
+	fractal->min_i = fractal->min_i + (fractal->center_i - zoom * fractal->center_i) / 2;
+	fractal->max_i = fractal->min_i + zoom * fractal->center_i;
+}
 
 int	is_number(char *str)
 {
@@ -32,12 +44,12 @@ void	choose_fractal(char **av, t_vars *vars)
 	return ;
 }
 
-int	run_fractal(t_vars *vars, t_data *img, t_mandelbrot *m, t_julia *j)
+int	run_fractal(t_vars *vars, t_data *img)
 {
 	if (vars->fractal == MANDELBROT)
-		set_mandel(m, img, vars);
+		set_mandel(img, vars);
 	if (vars->fractal == JULIA)
-		set_julia(j, img, vars);
+		set_julia(img, vars);
 	return (0);
 }
 

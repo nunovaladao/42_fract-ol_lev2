@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   Mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:07:43 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/15 16:37:15 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/04/18 21:23:02 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
-void init_mandel(t_mandelbrot *m, t_vars *vars) 
+void init_mandel(t_vars *m) 
 {
-  m->width = vars->width_win;
-  m->height = vars->height_win;
+  m->width = m->width_win;
+  m->height = m->height_win;
   m->count = 0;
-  m->zoom = 1;
   m->iter = 100;
   m->min_r = -2;
   m->max_r = m->min_r * -1 * m->width / m->height;
@@ -25,7 +24,7 @@ void init_mandel(t_mandelbrot *m, t_vars *vars)
   m->max_i = m->min_i * -1 * m->height / m->width;
 }
 
-int iter_mandel(t_mandelbrot *m, double cr, double ci)
+int iter_mandel(t_vars *m, double cr, double ci)
 {
   double zr;
   double zi;
@@ -51,14 +50,14 @@ int iter_mandel(t_mandelbrot *m, double cr, double ci)
   return (1);
 }
 
-void set_mandel(t_mandelbrot *m, t_data *img, t_vars *vars)
+void set_mandel(t_data *img, t_vars *m)
 {
   int x;
   int y;
   double pr;
   double pi;
 
-  init_mandel(m, vars);
+  init_mandel(m);
   y = -1;
   while (++y < m->height)
   {
@@ -73,5 +72,5 @@ void set_mandel(t_mandelbrot *m, t_data *img, t_vars *vars)
         my_mlx_pixel_put(img, x, y, 0x000000);
     }
   }
-  mlx_put_image_to_window(vars->mlx, vars->win, img->img, 0, 0);
+  mlx_put_image_to_window(m->mlx, m->win, img->img, 0, 0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 19:07:53 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/15 18:33:59 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:35:28 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	create_trgb(int t, int r, int g, int b)
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-int	color_mandel(t_mandelbrot *m)
+int	color_mandel(t_vars *m)
 {
 	int	r;
 	int	g;
@@ -37,14 +37,22 @@ int	color_mandel(t_mandelbrot *m)
 	return (create_trgb(0, r, g, b));
 }
 
-int	color_julia(t_julia *j)
+int color_julia(t_vars *j)
 {
-	int	r;
-	int	g;
-	int	b;
+  int red;
+  int green;
+  int blue;
 
-	r = (j->count * 3) % 256;
-	g = (j->count * 7) % 256;
-	b = (j->count * 9) % 256;
-	return (create_trgb(0, r, g, b));
+  // Define a intensidade verde com base na contagem de iterações
+  green = (j->count * 255) / j->iter;
+
+  // Define a intensidade vermelha com base na parte fracionária do deslocamento horizontal
+  red = (int)((j->shift_x - (int)j->shift_x) * 255);
+
+  // Define a intensidade azul com base na parte fracionária do deslocamento vertical
+  blue = (int)((j->shift_y - (int)j->shift_y) * 255);
+
+  // Combina as intensidades para formar a cor final
+  return (red << 16 | green << 8 | blue);
 }
+
