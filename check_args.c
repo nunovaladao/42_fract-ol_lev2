@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:24:27 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/18 21:24:01 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/19 12:45:02 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int input_window(char **av, char x)
     return (0);
 }
 
-int window_size(char **av, t_vars *vars)
+/* int window_size(char **av, t_vars *vars)
 {
     vars->width_win = input_window(av, 'w');
     if (!vars->width_win)
@@ -51,7 +51,7 @@ int window_size(char **av, t_vars *vars)
     if (!vars->height_win)
         vars->height_win = I_HEIGHT;
     return (0);
-}
+} */
 
 void display_mensg(int options)
 {
@@ -71,7 +71,7 @@ void display_mensg(int options)
     }
 }
 
-int	check_args(int ac, char **av, t_vars *vars)
+int	check_args(int ac, char **av/* , t_vars *vars */)
 {
 	if (ac == 1 || ac == 3 || ac > 4)
 	{
@@ -83,11 +83,10 @@ int	check_args(int ac, char **av, t_vars *vars)
 		if (ft_strcmp(av[1], "Julia") == 0 || ft_strcmp(av[1], \
 		"Mandelbrot") == 0)
 		{
-			window_size(av, vars);
-			if (ac == 4 && is_number(av[2]) == 0 && is_number(av[3]) == 0)
+			/* if (ac == 4 && is_number(av[2]) == 0 && is_number(av[3]) == 0)
 				window_size(av, vars);
 			else if (ac == 4)
-				display_mensg(2);
+				display_mensg(2); */
 			display_mensg(1);
 		}
 		else

@@ -6,7 +6,7 @@
 #    By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 17:52:53 by nsoares-          #+#    #+#              #
-#    Updated: 2023/04/18 21:45:28 by nuno             ###   ########.fr        #
+#    Updated: 2023/04/19 15:05:42 by nuno             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,7 @@ SOURCE_FILES = main.c \
 				init_mlx.c \
 				hook.c \
 				check_args.c \
-				fractals/Mandelbrot.c \
-				fractals/Julia.c \
+				fractals/Mandelbrot.c fractals/Julia.c \
 				colors.c \
 				fract_utils.c 
 				

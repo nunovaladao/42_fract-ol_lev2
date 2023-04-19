@@ -6,23 +6,11 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:07:43 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/18 21:23:02 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/19 12:14:24 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
-
-void init_mandel(t_vars *m) 
-{
-  m->width = m->width_win;
-  m->height = m->height_win;
-  m->count = 0;
-  m->iter = 100;
-  m->min_r = -2;
-  m->max_r = m->min_r * -1 * m->width / m->height;
-  m->min_i = -2;
-  m->max_i = m->min_i * -1 * m->height / m->width;
-}
 
 int iter_mandel(t_vars *m, double cr, double ci)
 {
@@ -57,15 +45,14 @@ void set_mandel(t_data *img, t_vars *m)
   double pr;
   double pi;
 
-  init_mandel(m);
   y = -1;
   while (++y < m->height)
   {
-    pi = m->max_i + (double)y * (m->min_i - m->max_i) / m->height; 
+    pi = m->zoom * 2 * (y + m->y_arr - m->height / 2) / (m->height / 2);
     x = -1;
     while (++x < m->width)
     {
-      pr = m->min_r + (double)x * (m->max_r - m->min_r) / m->width;
+      pr = m->zoom * 2 * (x + m->x_arr - m->width / 2) / (m->width / 2);
       if (iter_mandel(m, pr, pi) == 0)
         my_mlx_pixel_put(img, x, y, color_mandel(m));
       else

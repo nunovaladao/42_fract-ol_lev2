@@ -6,32 +6,11 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:07:33 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/18 21:05:06 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/19 15:00:07 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
-
-void julia_shift(t_vars *j, int x, int y)
-{
-    j->shift_x = j->min_r + (double)x * (j->max_r - j->min_i) / j->width;
-    j->shift_y = j->max_i + (double)y * (j->min_i - j->max_i) / j->height;
-    return ;
-}
-
-void init_julia(t_vars *j)
-{
-  j->width = j->width_win;
-  j->height = j->height_win;
-  j->count = 0;
-  j->iter = 15;
-  j->min_r = -2;
-  j->max_r = j->min_r * -1 * j->width / j->height;
-  j->min_i = -2;
-  j->max_i = j->min_i * -1 * j->height / j->width;
-  j->shift_x = 0;
-  j->shift_y = 0;
-}
 
 int iter_julia(t_vars *j, double zr, double zi)
 {
@@ -47,8 +26,8 @@ int iter_julia(t_vars *j, double zr, double zi)
       return(0);
     }
     tmp = zr * zr - zi * zi;
-    zi = 2 * zr * zi + j->shift_y;
-    zr = tmp + j->shift_x;
+    zi = 2 * zr * zi + j->c_i;
+    zr = tmp + j->c_r;
   }
       j->count = i;
   return (1);
@@ -61,15 +40,14 @@ void set_julia(t_data *img, t_vars *j)
   double pr;
   double pi;
   
-  init_julia(j);
   y = -1;
   while (++y < j->height)
   {
-    pi = j->max_i + (double)y * (j->min_i - j->max_i) / j->height; 
+    pi = j->zoom * 2 * (y + j->y_arr - j->height / 2) / (j->height / 2);
     x = -1;
     while (++x < j->width)
     {
-      pr = j->min_r + (double)x * (j->max_r - j->min_r) / j->width;
+      pr = j->zoom * 2 * (x + j->x_arr - j->width / 2) / (j->width / 2);
       if (iter_julia(j, pr, pi) == 0)
         my_mlx_pixel_put(img, x, y, color_julia(j));
       else
