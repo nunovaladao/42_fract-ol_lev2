@@ -6,7 +6,7 @@
 /*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:44:27 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/04/19 15:06:19 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/19 23:12:46 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,16 @@
 
 # include "libft/libft.h"
 # include "mlx-linux/mlx.h"
+#include <math.h>
 
 # define MANDELBROT 1
 # define JULIA 2
 
 # define I_WIDTH 800
 # define I_HEIGHT 800
+
+# define C_I 0.20015
+# define C_R -1.1
 
 # define ESC 65307
 # define SCROLL_UP 5
@@ -56,7 +60,7 @@ typedef struct	s_vars
 	int	t;
 }				t_vars;
 
-int	check_args(int ac, char **av/* , t_vars *vars */);
+void	check_args(int ac, char **av/* , t_vars *vars */);
 int	run_fractal(t_vars *vars, t_data *img);
 
 void	init_mlx(char **av, t_vars *vars, t_data *img);
@@ -74,6 +78,7 @@ int	color_mandel(t_vars *m);
 int	color_julia(t_vars *j);
 
 int	is_number(char *str);
+double ft_atod(const char *str);
 
 void	mlx_exit(t_vars *vars);
 

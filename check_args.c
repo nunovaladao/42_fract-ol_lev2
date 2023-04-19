@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:24:27 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/15 18:41:16 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/04/19 23:12:32 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	display_mensg(int options)
 int	input_window(char **av, char x)
 {
 	int	i;
-	int	size_win;
+	double	size_win;
 
 	i = 1;
 	size_win = 0;
@@ -48,48 +48,40 @@ int	input_window(char **av, char x)
 	{
 		if ((x == 'w' && (i == 2)) || (x == 'h' && (i == 3)))
 		{
-			size_win = ft_atoi(av[i]);
+			size_win = ft_atod(av[i]);
 			break ;
 		}
 	}
 	if (!size_win)
 		return (0);
-	if (x == 'w' && (size_win > 0 && size_win <= 1980))
-		return (size_win);
-	if (x == 'h' && (size_win > 0 && size_win <= 1080))
-		return (size_win);
-	display_mensg(2);
+	return (size_win);
+	//display_mensg(2);
+}
+
+int	window_size(char **av, t_vars *fractal)
+{
+	fractal->c_r = input_window(av, 'w');
+	if (!fractal->c_r)
+		fractal->c_r = C_R;
+	fractal->c_i = input_window(av, 'h');
+	if (!fractal->c_i)
+		fractal->c_i = C_I;
 	return (0);
 }
 
-int	window_size(char **av, t_vars *vars)
+void	check_args(int ac, char **av/* , t_vars *fractal */)
 {
-	vars->width_win = input_window(av, 'w');
-	if (!vars->width_win)
-		vars->width_win = I_WIDTH;
-	vars->height_win = input_window(av, 'h');
-	if (!vars->height_win)
-		vars->height_win = I_HEIGHT;
-	return (0);
-}
-
-int	check_args(int ac, char **av, t_vars *vars)
-{
-	if (ac == 1 || ac == 3 || ac > 4)
-	{
+	if (ac == 1)
 		display_mensg(0);
-		exit(0);
-	}
-	if (ac == 2 || ac == 4)
+	else if (ac == 2 || ac == 4)
 	{
 		if (ft_strcmp(av[1], "Julia") == 0 || ft_strcmp(av[1], \
 		"Mandelbrot") == 0)
 		{
-			window_size(av, vars);
-			if (ac == 4 && is_number(av[2]) == 0 && is_number(av[3]) == 0)
-				window_size(av, vars);
+			/* if (ac == 4 && is_number(av[2]) == 0 && is_number(av[3]) == 0)
+				window_size(av, fractal);
 			else if (ac == 4)
-				display_mensg(2);
+				display_mensg(2); */
 			display_mensg(1);
 		}
 		else
@@ -98,5 +90,7 @@ int	check_args(int ac, char **av, t_vars *vars)
 			display_mensg(0);
 		}
 	}
-	return (0);
+    else
+        return (display_mensg(0));
+	//return (0);
 }
