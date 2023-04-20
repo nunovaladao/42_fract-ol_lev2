@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:44:27 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/04/19 23:12:46 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/20 15:56:39 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "libft/libft.h"
 # include "mlx-linux/mlx.h"
-#include <math.h>
 
 # define MANDELBROT 1
 # define JULIA 2
@@ -69,7 +68,7 @@ int	hook_events(t_vars *vars);
 void init_mandel(t_vars *fractal);
 void	set_mandel(t_data *img, t_vars *m);
 
-void init_julia(t_vars *fractal);
+void init_julia(char **av, t_vars *fractal);
 void	set_julia(t_data *img, t_vars *j);
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
@@ -77,8 +76,8 @@ int	create_trgb(int t, int r, int g, int b);
 int	color_mandel(t_vars *m);
 int	color_julia(t_vars *j);
 
-int	is_number(char *str);
-double ft_atod(const char *str);
+int	is_valid(char *str);
+double ft_atod(char *str);
 
 void	mlx_exit(t_vars *vars);
 

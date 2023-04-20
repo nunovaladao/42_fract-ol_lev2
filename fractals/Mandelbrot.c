@@ -60,4 +60,5 @@ void set_mandel(t_data *img, t_vars *m)
     }
   }
   mlx_put_image_to_window(m->mlx, m->win, img->img, 0, 0);
+  mlx_destroy_image(m->mlx, img->img);
 }

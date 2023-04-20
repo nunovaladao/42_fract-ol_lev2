@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:08:40 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/19 23:11:53 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/20 15:33:07 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	init_mlx(char **av, t_vars *fractal, t_data *img)
 	if (fractal->fractal == MANDELBROT)
 		init_mandel(fractal);
 	if (fractal->fractal == JULIA)
-		init_julia(fractal);
+		init_julia(av, fractal);
 }
 
 void init_mandel(t_vars *fractal)
@@ -47,7 +47,7 @@ void init_mandel(t_vars *fractal)
   fractal->y_arr = 0;
 }
 
-void init_julia(t_vars *fractal)
+void init_julia(char **av, t_vars *fractal)
 {
   fractal->width = I_WIDTH;
   fractal->height = I_HEIGHT;
@@ -56,8 +56,10 @@ void init_julia(t_vars *fractal)
   fractal->iter = 100;
   fractal->x_arr = 0;
   fractal->y_arr = 0;
-  //fractal->c_i = ft_atod(av[2]);
-  //fractal->c_r = ft_atod(av[3]);
-  fractal->c_i = 0.20015;
-  fractal->c_r = -1.1;
+  fractal->c_i = ft_atod(av[2]);
+  if (!fractal->c_i)
+	fractal->c_i = C_I;
+  fractal->c_r = ft_atod(av[3]);
+  if (!fractal->c_r)
+	fractal->c_r = C_R;
 }

@@ -3,64 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   fract_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:16:00 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/19 22:38:31 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/20 15:38:54 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-double power_of_10(int exp) 
+double	ft_atod(char *str)
 {
-    double res = 1.0;
-    while (exp > 0) {
-        res *= 10.0;
-        exp--;
-    }
-    while (exp < 0) {
-        res /= 10.0;
-        exp++;
-    }
-    return res;
-}
+	double	res;
+	int		s;
+	int		i;
+	double	nb;
 
-double ft_atod(const char *str) 
-{
-    double s = 1;
-    double res = 0;
-    int i = 0;
-    double n = 1;
-
-    if (str[i] == '-' || str[i] == '+') 
-	{
-        if (str[i] == '-')
-            s *= -1;
-        i++;
-    }
+	s = 1;
+	res = 0;
+	nb = 1;
+	i = 0;
+	if (!str)
+		return (0);
+	if (str[i] == '+' || str[i] == '-')
+		if (str[i++] == '-')
+			s *= -1;
 	while (str[i] >= '0' && str[i] <= '9')
 		res = res * 10 + (str[i++] - '0');
-	if (str[i] == '.')
-		i++;
-    while ((str[i] >= '0' && str[i] <= '9') || str[i] == '.')
+	while ((str[i] >= '0' && str[i] <= '9'))
 	{
-            res = res + (str[i++] - '0') * 0.1 * n;
-			n = n / 10;
-    }
-    return ((res) * s);
+        if (str[i] == '.')
+		    i++;
+		res = res + (str[i++] - '0') * 0.1 * nb;
+		nb = nb / 10;
+	}
+	return (res * s);
 }
 
-
-int	is_number(char *str)
+int	is_valid(char *str)
 {
 	while (*str)
 	{
-		if (!ft_isdigit(*str))
-			return (1);
+		if (ft_isdigit(*str) || *str == '.' || *str == '-')
+			return (0);
 		str++;
 	}
-	return (0);
+	return (1);
 }
 
 int	run_fractal(t_vars *fractal, t_data *img)

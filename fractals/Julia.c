@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:07:33 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/19 15:00:07 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/20 12:53:26 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,5 @@ void set_julia(t_data *img, t_vars *j)
     }
   }
   mlx_put_image_to_window(j->mlx, j->win, img->img, 0, 0);
+  mlx_destroy_image(j->mlx, img->img);
 }
