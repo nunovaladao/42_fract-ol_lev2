@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fract_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:16:00 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/22 20:47:29 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/24 15:07:41 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ double	ft_atod(char *str)
 			s *= -1;
 	while (str[i] >= '0' && str[i] <= '9')
 		res = res * 10 + (str[i++] - '0');
-	while ((str[i] >= '0' && str[i] <= '9'))
+	while ((str[i] >= '0' && str[i] <= '9') || str[i] == '.')
 	{
         if (str[i] == '.')
 		    i++;
@@ -42,45 +42,40 @@ double	ft_atod(char *str)
 
 bool is_double(char *arg) 
 {
-    int tamanho = ft_strlen(arg);
-    int i = 0;
+    int len;
+    int i;
     
-    while (i < tamanho) 
+	len = ft_strlen(arg);
+	i = 0;
+    while (i < len)
     {
         char c = arg[i];
-        if ((c < '0' || c > '9') && c != '.' && c != '-') {
+        if ((c < '0' || c > '9') && c != '.' && c != '-')
             return false;
-        }
         i++;
     }
     return true;
 }
 
-bool valid_size(char **av)
+double valid_size(char **av, char a)
 {
     double arg;
-	static int i;
+	int i;
 	
-	i = 2;
-	while (av[i])
+	i = 1;
+	arg = 0.0;
+	while (av[++i])
 	{
-		arg = ft_atod(av[i]);
-		if (arg >= -2.0 && arg <= 1.0)
+		if ((a == 'x' && i == 2) || (a == 'y' && i == 3))
 		{
-			i++;	
-			return true;
+			arg = ft_atod(av[i]);
+			break ;
 		}
 	}
-	return false;
+	if (arg >= -2.0 && arg <= 2.0)
+		return (1);
+	return (0);
 }
-
-int	is_valid(char *arg)
-{
-	if (is_double(arg) == true)
-		return (0);
-	return (1);
-}
-
 
 int	run_fractal(t_vars *fractal, t_data *img)
 {

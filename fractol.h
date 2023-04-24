@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:44:27 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/04/22 20:13:29 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/24 15:41:05 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 
 # define C_I 0.20015
 # define C_R -1.1
-# define ARGS "0123456789.-"
 
 # define ESC 65307
 # define SCROLL_UP 5
@@ -64,13 +63,13 @@ typedef struct	s_vars
 void	check_args(int ac, char **av);
 int	run_fractal(t_vars *vars, t_data *img);
 
-void	init_mlx(char **av, t_vars *vars, t_data *img);
+void	init_mlx(int ac, char **av, t_vars *vars, t_data *img);
 int	hook_events(t_vars *vars);
 
 void init_mandel(t_vars *fractal);
 void	set_mandel(t_data *img, t_vars *m);
 
-void init_julia(char **av, t_vars *fractal);
+void init_julia(int ac, char **av, t_vars *fractal);
 void	set_julia(t_data *img, t_vars *j);
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
@@ -78,8 +77,7 @@ int	create_trgb(int t, int r, int g, int b);
 int	color_mandel(t_vars *m);
 int	color_julia(t_vars *j);
 
-int	is_valid(char *arg);
-bool valid_size(char **av);
+double valid_size(char **av, char a);
 bool is_double(char *arg);
 double ft_atod(char *str);
 

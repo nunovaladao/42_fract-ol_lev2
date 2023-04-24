@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:07:33 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/20 12:53:26 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/04/24 12:30:02 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ void set_julia(t_data *img, t_vars *j)
   double pr;
   double pi;
   
-  y = -1;
-  while (++y < j->height)
+  x = -1;
+  while (++x < j->height)
   {
-    pi = j->zoom * 2 * (y + j->y_arr - j->height / 2) / (j->height / 2);
-    x = -1;
-    while (++x < j->width)
+    pr = j->zoom * 2 * (x + j->x_arr - j->height / 2) / (j->height / 2);
+    y = -1;
+    while (++y < j->width)
     {
-      pr = j->zoom * 2 * (x + j->x_arr - j->width / 2) / (j->width / 2);
+      pi = j->zoom * 2 * (y + j->y_arr - j->width / 2) / (j->width / 2);
       if (iter_julia(j, pr, pi) == 0)
         my_mlx_pixel_put(img, x, y, color_julia(j));
       else

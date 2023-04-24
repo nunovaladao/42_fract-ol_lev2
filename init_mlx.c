@@ -6,13 +6,13 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:08:40 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/20 15:33:07 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/04/24 15:42:06 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	init_mlx(char **av, t_vars *fractal, t_data *img)
+void	init_mlx(int ac ,char **av, t_vars *fractal, t_data *img)
 {
 	fractal->mlx = mlx_init();
 	if (ft_strcmp(av[1], "Mandelbrot") == 0)
@@ -33,7 +33,7 @@ void	init_mlx(char **av, t_vars *fractal, t_data *img)
 	if (fractal->fractal == MANDELBROT)
 		init_mandel(fractal);
 	if (fractal->fractal == JULIA)
-		init_julia(av, fractal);
+		init_julia(ac, av, fractal);
 }
 
 void init_mandel(t_vars *fractal)
@@ -47,7 +47,7 @@ void init_mandel(t_vars *fractal)
   fractal->y_arr = 0;
 }
 
-void init_julia(char **av, t_vars *fractal)
+void init_julia(int ac, char **av, t_vars *fractal)
 {
   fractal->width = I_WIDTH;
   fractal->height = I_HEIGHT;
@@ -57,9 +57,9 @@ void init_julia(char **av, t_vars *fractal)
   fractal->x_arr = 0;
   fractal->y_arr = 0;
   fractal->c_i = ft_atod(av[2]);
-  if (!fractal->c_i)
+  if (!fractal->c_i && ac == 2)
 	fractal->c_i = C_I;
   fractal->c_r = ft_atod(av[3]);
-  if (!fractal->c_r)
+  if (!fractal->c_r && ac == 2)
 	fractal->c_r = C_R;
 }

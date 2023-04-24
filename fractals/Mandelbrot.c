@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:07:43 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/19 12:14:24 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/24 12:34:17 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,14 @@ void set_mandel(t_data *img, t_vars *m)
   double pr;
   double pi;
 
-  y = -1;
-  while (++y < m->height)
+  x = -1;
+  while (++x < m->height)
   {
-    pi = m->zoom * 2 * (y + m->y_arr - m->height / 2) / (m->height / 2);
-    x = -1;
-    while (++x < m->width)
+    pr = m->zoom * 2 * (x + m->x_arr - m->height / 2) / (m->height / 2);
+    y = -1;
+    while (++y < m->width)
     {
-      pr = m->zoom * 2 * (x + m->x_arr - m->width / 2) / (m->width / 2);
+      pi = m->zoom * 2 * (y + m->y_arr - m->width / 2) / (m->width / 2);
       if (iter_mandel(m, pr, pi) == 0)
         my_mlx_pixel_put(img, x, y, color_mandel(m));
       else

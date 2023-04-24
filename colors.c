@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 19:07:53 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/19 12:51:13 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/24 13:09:32 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	color_mandel(t_vars *m)
 
 int color_julia(t_vars *j)
 {
-  int	r;
+  	int	r;
 	int	g;
 	int	b;
 
