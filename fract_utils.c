@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fract_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:16:00 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/20 15:38:54 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/04/22 20:47:29 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,47 @@ double	ft_atod(char *str)
 	return (res * s);
 }
 
-int	is_valid(char *str)
+bool is_double(char *arg) 
 {
-	while (*str)
+    int tamanho = ft_strlen(arg);
+    int i = 0;
+    
+    while (i < tamanho) 
+    {
+        char c = arg[i];
+        if ((c < '0' || c > '9') && c != '.' && c != '-') {
+            return false;
+        }
+        i++;
+    }
+    return true;
+}
+
+bool valid_size(char **av)
+{
+    double arg;
+	static int i;
+	
+	i = 2;
+	while (av[i])
 	{
-		if (ft_isdigit(*str) || *str == '.' || *str == '-')
-			return (0);
-		str++;
+		arg = ft_atod(av[i]);
+		if (arg >= -2.0 && arg <= 1.0)
+		{
+			i++;	
+			return true;
+		}
 	}
+	return false;
+}
+
+int	is_valid(char *arg)
+{
+	if (is_double(arg) == true)
+		return (0);
 	return (1);
 }
+
 
 int	run_fractal(t_vars *fractal, t_data *img)
 {

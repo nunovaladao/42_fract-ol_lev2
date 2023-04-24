@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:24:27 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/20 15:31:55 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/04/24 09:53:16 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	display_mensg(int options)
 	}
 }
 
-void	check_args(int ac, char **av/* , t_vars *fractal */)
+void	check_args(int ac, char **av)
 {
 	if (ac == 1)
 		display_mensg(0);
@@ -46,10 +46,13 @@ void	check_args(int ac, char **av/* , t_vars *fractal */)
 		if (ft_strcmp(av[1], "Julia") == 0 || ft_strcmp(av[1], \
 		"Mandelbrot") == 0)
 		{
-			if (ac == 4 && is_valid(av[2]) == 0 && is_valid(av[3]) == 0)
-				display_mensg(1);
-			else if (ac == 4)
-				display_mensg(2);
+			if (ac == 4 && ft_strcmp(av[1], "Julia") == 0 && is_double(av[2]) == 1 && is_double(av[3]) == 1)
+            {
+                if (valid_size(av) == true && valid_size(av) == true)
+				    display_mensg(1);
+                else 
+                    display_mensg(2);
+            }
 			else
 				display_mensg(1);
 		}

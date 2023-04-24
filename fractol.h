@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:44:27 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/04/20 15:56:39 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/04/22 20:13:29 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft/libft.h"
 # include "mlx-linux/mlx.h"
+# include <stdbool.h>
 
 # define MANDELBROT 1
 # define JULIA 2
@@ -24,6 +25,7 @@
 
 # define C_I 0.20015
 # define C_R -1.1
+# define ARGS "0123456789.-"
 
 # define ESC 65307
 # define SCROLL_UP 5
@@ -59,7 +61,7 @@ typedef struct	s_vars
 	int	t;
 }				t_vars;
 
-void	check_args(int ac, char **av/* , t_vars *vars */);
+void	check_args(int ac, char **av);
 int	run_fractal(t_vars *vars, t_data *img);
 
 void	init_mlx(char **av, t_vars *vars, t_data *img);
@@ -76,7 +78,9 @@ int	create_trgb(int t, int r, int g, int b);
 int	color_mandel(t_vars *m);
 int	color_julia(t_vars *j);
 
-int	is_valid(char *str);
+int	is_valid(char *arg);
+bool valid_size(char **av);
+bool is_double(char *arg);
 double ft_atod(char *str);
 
 void	mlx_exit(t_vars *vars);
