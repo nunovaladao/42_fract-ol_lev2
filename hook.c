@@ -3,35 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 16:04:05 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/19 11:53:43 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/25 23:04:54 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	mouse_hook(int keycode, t_vars *fractal, t_data *img, int x, int y)
+int	mouse_hook(int keycode, int x, int y, t_vars *fractal)
 {
     (void)x;
     (void)y;
-    if (fractal->fractal == MANDELBROT)
-    {
-        if (keycode == SCROLL_UP)
-            fractal->zoom *= 1.1;
-        if (keycode == SCROLL_DOWN)
-            fractal->zoom /= 1.1;
-        set_mandel(img, fractal);
-    }
-    if (fractal->fractal == JULIA)
-    {
-        if (keycode == SCROLL_UP)
-            fractal->zoom *= 1.1;
-        if (keycode == SCROLL_DOWN)
-            fractal->zoom /= 1.1;
-        set_julia(img, fractal);
-    }
+    if (keycode == SCROLL_UP)
+		fractal->zoom /= 1.3;
+	else if (keycode == SCROLL_DOWN)
+		fractal->zoom *= 1.3;
+	if (fractal->fractal == JULIA)
+		set_julia(fractal);
+	else if (fractal->fractal == MANDELBROT)
+		set_mandel(fractal);
 	return (0);
 }
 

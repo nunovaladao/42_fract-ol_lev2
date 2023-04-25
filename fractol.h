@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:44:27 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/04/24 15:41:05 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/04/25 23:09:44 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FRACTOL_H
 
 # include "libft/libft.h"
-# include "mlx-linux/mlx.h"
+# include "minilibx_opengl_20191021/mlx.h"
 # include <stdbool.h>
 
 # define MANDELBROT 1
@@ -27,23 +27,18 @@
 # define C_R -1.1
 
 # define ESC 65307
-# define SCROLL_UP 5
-# define SCROLL_DOWN 4
+# define SCROLL_UP 4
+# define SCROLL_DOWN 5
 
-typedef struct	s_data 
+typedef struct	s_vars 
 {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}				t_data;
-
-typedef struct	s_vars 
-{
 	void	*mlx;
 	void	*win;
-	t_data	img;
 	int	fractal;
 	double zoom;
 	double	c_i;
@@ -61,18 +56,18 @@ typedef struct	s_vars
 }				t_vars;
 
 void	check_args(int ac, char **av);
-int	run_fractal(t_vars *vars, t_data *img);
+int	run_fractal(t_vars *vars);
 
-void	init_mlx(int ac, char **av, t_vars *vars, t_data *img);
+void	init_mlx(int ac, char **av, t_vars *vars);
 int	hook_events(t_vars *vars);
 
 void init_mandel(t_vars *fractal);
-void	set_mandel(t_data *img, t_vars *m);
+void	set_mandel(t_vars *m);
 
 void init_julia(int ac, char **av, t_vars *fractal);
-void	set_julia(t_data *img, t_vars *j);
+void	set_julia(t_vars *j);
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	my_mlx_pixel_put(t_vars *data, int x, int y, int color);
 int	create_trgb(int t, int r, int g, int b);
 int	color_mandel(t_vars *m);
 int	color_julia(t_vars *j);

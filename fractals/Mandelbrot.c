@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:07:43 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/24 12:34:17 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/04/25 23:08:09 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int iter_mandel(t_vars *m, double cr, double ci)
   return (1);
 }
 
-void set_mandel(t_data *img, t_vars *m)
+void set_mandel(t_vars *m)
 {
   int x;
   int y;
@@ -54,11 +54,10 @@ void set_mandel(t_data *img, t_vars *m)
     {
       pi = m->zoom * 2 * (y + m->y_arr - m->width / 2) / (m->width / 2);
       if (iter_mandel(m, pr, pi) == 0)
-        my_mlx_pixel_put(img, x, y, color_mandel(m));
+        my_mlx_pixel_put(m, x, y, color_mandel(m));
       else
-        my_mlx_pixel_put(img, x, y, 0x000000);
+        my_mlx_pixel_put(m, x, y, 0x000000);
     }
   }
-  mlx_put_image_to_window(m->mlx, m->win, img->img, 0, 0);
-  mlx_destroy_image(m->mlx, img->img);
+  mlx_put_image_to_window(m->mlx, m->win, m->img, 0, 0);
 }

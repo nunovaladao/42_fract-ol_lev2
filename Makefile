@@ -6,7 +6,7 @@
 #    By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 17:52:53 by nsoares-          #+#    #+#              #
-#    Updated: 2023/04/20 15:56:45 by nsoares-         ###   ########.fr        #
+#    Updated: 2023/04/25 19:28:28 by nsoares-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ LIBFT = ./libft/libft.a
 
 # __________MLX_______________
 
-MLX = -L ./mlx-linux -lmlx -Ilmlx -lXext -lX11
+#MLX = -L ./mlx-linux -lmlx -Ilmlx -lXext -lX11
+MLX = -L ./minilibx_opengl_20191021 -lmlx -Imlx -framework OpenGL -framework AppKit
 
 # _________SOURCES____________
 
@@ -27,7 +28,8 @@ SOURCE_FILES = main.c \
 				init_mlx.c \
 				hook.c \
 				check_args.c \
-				fractals/Mandelbrot.c fractals/Julia.c \
+				fractals/Mandelbrot.c \
+				fractals/Julia.c \
 				colors.c \
 				fract_utils.c 
 				
@@ -68,7 +70,7 @@ $(LIBFT):
 	@ $(MAKE) -C ./libft
 
 $(MLX_L): 
-	@ $(MAKE) - C ./mlx-linux
+	@ $(MAKE) - C ./minilibx_opengl_20191021
 
 clean:
 	@ $(RM) $(OBJS_FILES)

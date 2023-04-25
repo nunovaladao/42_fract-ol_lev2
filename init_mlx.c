@@ -6,13 +6,13 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:08:40 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/24 15:42:06 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/04/25 23:09:09 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	init_mlx(int ac ,char **av, t_vars *fractal, t_data *img)
+void	init_mlx(int ac ,char **av, t_vars *fractal)
 {
 	fractal->mlx = mlx_init();
 	if (ft_strcmp(av[1], "Mandelbrot") == 0)
@@ -27,9 +27,9 @@ void	init_mlx(int ac ,char **av, t_vars *fractal, t_data *img)
 		I_HEIGHT, "Julia");
 		fractal->fractal = JULIA;
 	}
-	img->img = mlx_new_image(fractal->mlx, I_WIDTH, I_HEIGHT);
-	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel, \
-	&img->line_length, &img->endian);
+	fractal->img = mlx_new_image(fractal->mlx, I_WIDTH, I_HEIGHT);
+	fractal->addr = mlx_get_data_addr(fractal->img, &fractal->bits_per_pixel, \
+	&fractal->line_length, &fractal->endian);
 	if (fractal->fractal == MANDELBROT)
 		init_mandel(fractal);
 	if (fractal->fractal == JULIA)
