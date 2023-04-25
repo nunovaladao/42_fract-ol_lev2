@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:44:27 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/04/25 23:09:44 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/04/25 23:11:17 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FRACTOL_H
 
 # include "libft/libft.h"
-# include "minilibx_opengl_20191021/mlx.h"
+# include "mlx-linux/mlx.h"
 # include <stdbool.h>
 
 # define MANDELBROT 1

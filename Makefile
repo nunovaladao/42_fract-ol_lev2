@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+         #
+#    By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 17:52:53 by nsoares-          #+#    #+#              #
-#    Updated: 2023/04/25 19:28:28 by nsoares-         ###   ########.fr        #
+#    Updated: 2023/04/25 23:11:49 by nuno             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,8 @@ LIBFT = ./libft/libft.a
 
 # __________MLX_______________
 
-#MLX = -L ./mlx-linux -lmlx -Ilmlx -lXext -lX11
-MLX = -L ./minilibx_opengl_20191021 -lmlx -Imlx -framework OpenGL -framework AppKit
+MLX = -L ./mlx-linux -lmlx -Ilmlx -lXext -lX11
+#MLX = -L ./minilibx_opengl_20191021 -lmlx -Imlx -framework OpenGL -framework AppKit
 
 # _________SOURCES____________
 
@@ -70,7 +70,7 @@ $(LIBFT):
 	@ $(MAKE) -C ./libft
 
 $(MLX_L): 
-	@ $(MAKE) - C ./minilibx_opengl_20191021
+	@ $(MAKE) - C ./mlx-linux
 
 clean:
 	@ $(RM) $(OBJS_FILES)

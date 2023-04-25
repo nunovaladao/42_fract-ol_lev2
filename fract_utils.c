@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fract_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:16:00 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/25 22:53:22 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/04/25 23:17:09 by nuno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,9 @@ int	run_fractal(t_vars *fractal)
 
 void	mlx_exit(t_vars *vars)
 {
-	//mlx_destroy_image(vars->mlx, vars->img.img);
+	mlx_destroy_image(vars->mlx, vars->img);
 	mlx_destroy_window(vars->mlx, vars->win);
-	//mlx_destroy_display(vars->mlx);
+	mlx_destroy_display(vars->mlx);
 	free(vars->mlx);
 	exit(EXIT_SUCCESS);
 }
