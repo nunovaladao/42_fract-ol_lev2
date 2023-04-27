@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+         #
+#    By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 17:52:53 by nsoares-          #+#    #+#              #
-#    Updated: 2023/04/25 23:11:49 by nuno             ###   ########.fr        #
+#    Updated: 2023/04/27 11:50:22 by nsoares-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,13 +25,13 @@ MLX = -L ./mlx-linux -lmlx -Ilmlx -lXext -lX11
 # _________SOURCES____________
 
 SOURCE_FILES = main.c \
-				init_mlx.c \
-				hook.c \
-				check_args.c \
+				src/init_mlx.c \
+				src/hook.c \
+				src/check_args.c \
 				fractals/Mandelbrot.c \
 				fractals/Julia.c \
-				colors.c \
-				fract_utils.c 
+				src/colors.c \
+				src/fract_utils.c 
 				
 
 OBJS_FILES = $(SOURCE_FILES:.c=.o)
@@ -60,7 +60,7 @@ RE          =   echo "\n$(BOLD_YELLOW)Re: $(NO_COLOR)Compilation restarted \n"
 all: compilation_start $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS_FILES)
-		$(CC) $(CFLAGS) $(SOURCE_FILES) $(LIBFT) $(MLX) $(MLX_L) -o $(NAME)
+		$(CC) $(CFLAGS) $(SOURCE_FILES) $(LIBFT) $(MLX_L) $(MLX) -o $(NAME)
 	@ $(FRACTOL_READY)
 
 compilation_start:
