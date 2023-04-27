@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:16:00 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/25 22:53:22 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/04/27 10:22:49 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,36 +32,37 @@ double	ft_atod(char *str)
 		res = res * 10 + (str[i++] - '0');
 	while ((str[i] >= '0' && str[i] <= '9') || str[i] == '.')
 	{
-        if (str[i] == '.')
-		    i++;
+		if (str[i] == '.')
+			i++;
 		res = res + (str[i++] - '0') * 0.1 * nb;
 		nb = nb / 10;
 	}
 	return (res * s);
 }
 
-bool is_double(char *arg) 
+bool	is_double(char *arg)
 {
-    int len;
-    int i;
-    
+	int		len;
+	int		i;
+	char	c;
+
 	len = ft_strlen(arg);
 	i = 0;
-    while (i < len)
-    {
-        char c = arg[i];
-        if ((c < '0' || c > '9') && c != '.' && c != '-')
-            return false;
-        i++;
-    }
-    return true;
+	while (i < len)
+	{
+		c = arg[i];
+		if ((c < '0' || c > '9') && c != '.' && c != '-')
+			return (false);
+		i++;
+	}
+	return (true);
 }
 
-double valid_size(char **av, char a)
+double	valid_size(char **av, char a)
 {
-    double arg;
-	int i;
-	
+	double	arg;
+	int		i;
+
 	i = 1;
 	arg = 0.0;
 	while (av[++i])
@@ -88,9 +89,9 @@ int	run_fractal(t_vars *fractal)
 
 void	mlx_exit(t_vars *vars)
 {
-	//mlx_destroy_image(vars->mlx, vars->img.img);
+	mlx_destroy_image(vars->mlx, vars->img);
 	mlx_destroy_window(vars->mlx, vars->win);
-	//mlx_destroy_display(vars->mlx);
+	mlx_destroy_display(vars->mlx);
 	free(vars->mlx);
 	exit(EXIT_SUCCESS);
 }

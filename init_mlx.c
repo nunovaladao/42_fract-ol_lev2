@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-void	init_mlx(int ac ,char **av, t_vars *fractal)
+void	init_mlx(int ac, char **av, t_vars *fractal)
 {
 	fractal->mlx = mlx_init();
 	if (ft_strcmp(av[1], "Mandelbrot") == 0)
@@ -36,26 +36,26 @@ void	init_mlx(int ac ,char **av, t_vars *fractal)
 		init_julia(ac, av, fractal);
 }
 
-void init_mandel(t_vars *fractal)
+void	init_mandel(t_vars *fractal)
 {
-  fractal->width = I_WIDTH;
-  fractal->height = I_HEIGHT;
-  fractal->zoom = 1.0;
-  fractal->count = 0;
-  fractal->iter = 100;
+	fractal->width = I_WIDTH;
+	fractal->height = I_HEIGHT;
+	fractal->zoom = 1.0;
+	fractal->count = 0;
+	fractal->iter = 100;
 }
 
-void init_julia(int ac, char **av, t_vars *fractal)
+void	init_julia(int ac, char **av, t_vars *fractal)
 {
-  fractal->width = I_WIDTH;
-  fractal->height = I_HEIGHT;
-  fractal->zoom = 1.0;
-  fractal->count = 0;
-  fractal->iter = 100;
-  fractal->c_i = ft_atod(av[2]);
-  if (!fractal->c_i && ac == 2)
-	fractal->c_i = C_I;
-  fractal->c_r = ft_atod(av[3]);
-  if (!fractal->c_r && ac == 2)
-	fractal->c_r = C_R;
+	fractal->width = I_WIDTH;
+	fractal->height = I_HEIGHT;
+	fractal->zoom = 1.0;
+	fractal->count = 0;
+	fractal->iter = 100;
+	fractal->c_i = ft_atod(av[2]);
+	if (!fractal->c_i && ac == 2)
+		fractal->c_i = C_I;
+	fractal->c_r = ft_atod(av[3]);
+	if (!fractal->c_r && ac == 2)
+		fractal->c_r = C_R;
 }

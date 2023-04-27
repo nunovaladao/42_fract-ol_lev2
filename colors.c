@@ -37,9 +37,9 @@ int	color_mandel(t_vars *m)
 	return (create_trgb(0, r, g, b));
 }
 
-int color_julia(t_vars *j)
+int	color_julia(t_vars *j)
 {
-  	int	r;
+	int	r;
 	int	g;
 	int	b;
 
@@ -48,4 +48,3 @@ int color_julia(t_vars *j)
 	b = (j->count * 20) % 256;
 	return (create_trgb(0, r, g, b));
 }
-
