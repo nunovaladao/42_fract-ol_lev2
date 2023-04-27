@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:07:33 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/27 09:47:48 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/04/27 12:30:57 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	iter_julia(t_vars *j, double zr, double zi)
 			return (0);
 		}
 	}
-		j->count = i;
 	return (1);
 }
 

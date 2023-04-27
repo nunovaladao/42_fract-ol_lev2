@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:07:43 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/26 19:05:16 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/04/27 12:31:03 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	iter_mandel(t_vars *m, double cr, double ci)
 			return (0);
 		}
 	}
-		m->count = i;
 	return (1);
 }
 
