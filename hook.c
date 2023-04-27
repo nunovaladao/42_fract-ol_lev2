@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 16:04:05 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/25 23:04:54 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/04/26 16:29:42 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	mouse_hook(int keycode, int x, int y, t_vars *fractal)
     (void)x;
     (void)y;
     if (keycode == SCROLL_UP)
-		fractal->zoom /= 1.3;
+		fractal->zoom /= 1.2;
 	else if (keycode == SCROLL_DOWN)
-		fractal->zoom *= 1.3;
+		fractal->zoom *= 1.2;
 	if (fractal->fractal == JULIA)
 		set_julia(fractal);
 	else if (fractal->fractal == MANDELBROT)
@@ -38,6 +38,6 @@ int	hook_events(t_vars *fractal)
 {
 	mlx_hook(fractal->win, 17, 0, (void *)mlx_exit, fractal);
 	mlx_key_hook(fractal->win, &keyboard_hook, fractal);
-	mlx_mouse_hook(fractal->win, &mouse_hook, (void*)fractal);
+	mlx_mouse_hook(fractal->win, &mouse_hook, fractal);
 	return (0);
 }

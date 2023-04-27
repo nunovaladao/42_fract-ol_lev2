@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:44:27 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/04/25 23:11:17 by nuno             ###   ########.fr       */
+/*   Updated: 2023/04/26 18:30:57 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FRACTOL_H
 
 # include "libft/libft.h"
-# include "mlx-linux/mlx.h"
+# include "minilibx_opengl_20191021/mlx.h"
 # include <stdbool.h>
 
 # define MANDELBROT 1
@@ -23,8 +23,8 @@
 # define I_WIDTH 800
 # define I_HEIGHT 800
 
-# define C_I 0.20015
-# define C_R -1.1
+# define C_I 0.27015
+# define C_R -0.7
 
 # define ESC 65307
 # define SCROLL_UP 4
@@ -43,8 +43,6 @@ typedef struct	s_vars
 	double zoom;
 	double	c_i;
 	double	c_r;
-	int x_arr;
-	int y_arr;
 	int	iter;
 	int	height;
 	int	width;
@@ -56,8 +54,8 @@ typedef struct	s_vars
 }				t_vars;
 
 void	check_args(int ac, char **av);
-int	run_fractal(t_vars *vars);
 
+int	run_fractal(t_vars *vars);
 void	init_mlx(int ac, char **av, t_vars *vars);
 int	hook_events(t_vars *vars);
 

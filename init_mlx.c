@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:08:40 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/25 23:09:09 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/04/26 13:45:24 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ void init_mandel(t_vars *fractal)
   fractal->zoom = 1.0;
   fractal->count = 0;
   fractal->iter = 100;
-  fractal->x_arr = 0;
-  fractal->y_arr = 0;
 }
 
 void init_julia(int ac, char **av, t_vars *fractal)
@@ -54,8 +52,6 @@ void init_julia(int ac, char **av, t_vars *fractal)
   fractal->zoom = 1.0;
   fractal->count = 0;
   fractal->iter = 100;
-  fractal->x_arr = 0;
-  fractal->y_arr = 0;
   fractal->c_i = ft_atod(av[2]);
   if (!fractal->c_i && ac == 2)
 	fractal->c_i = C_I;
