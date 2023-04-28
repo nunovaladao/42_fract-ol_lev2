@@ -3,38 +3,30 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+         #
+#    By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 17:52:53 by nsoares-          #+#    #+#              #
-#    Updated: 2023/04/27 11:50:22 by nsoares-         ###   ########.fr        #
+#    Updated: 2023/04/28 18:44:12 by nuno             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g  
-RM = rm -rf
+CFLAGS = -L ./minilibx-linux -Wall -Werror -Wextra -g -lmlx -Ilmlx -lXext -lX11
 LIBFT = ./libft/libft.a
+RM = rm -rf
 
-# __________MLX_______________
-
-MLX = -L ./mlx-linux -lmlx -Ilmlx -lXext -lX11
-#MLX = -L ./minilibx_opengl_20191021 -lmlx -Imlx -framework OpenGL -framework AppKit
-
-# _________SOURCES____________
-
-SOURCE_FILES = main.c \
+SRC = main.c \
 				src/init_mlx.c \
 				src/hook.c \
 				src/check_args.c \
 				fractals/Mandelbrot.c \
 				fractals/Julia.c \
 				src/colors.c \
-				src/fract_utils.c 
-				
+				src/fract_utils.c
 
-OBJS_FILES = $(SOURCE_FILES:.c=.o)
+OBJS_FILES = $(SRC:.c=.o)
 
 # __________COLORS____________
 
@@ -55,22 +47,16 @@ FCLEANED	=	echo "\n$(BOLD_YELLOW)Fclean: $(NO_COLOR)Removed the executables \n"
 
 RE          =   echo "\n$(BOLD_YELLOW)Re: $(NO_COLOR)Compilation restarted \n"
 
-# __________RULES______________
-
 all: compilation_start $(NAME)
 
-$(NAME): $(LIBFT) $(OBJS_FILES)
-		$(CC) $(CFLAGS) $(SOURCE_FILES) $(LIBFT) $(MLX_L) $(MLX) -o $(NAME)
+$(NAME): $(OBJS_FILES)
+	$(MAKE) --no-print-directory -C ./libft
+	$(MAKE) --no-print-directory -C ./minilibx-linux
+	$(CC) $(SRC) $(LIBFT) $(CFLAGS) -o $(NAME)
 	@ $(FRACTOL_READY)
 
 compilation_start:
 	@ $(COMPILATION_START)
-
-$(LIBFT):
-	@ $(MAKE) -C ./libft
-
-$(MLX_L): 
-	@ $(MAKE) - C ./mlx-linux
 
 clean:
 	@ $(RM) $(OBJS_FILES)
@@ -80,6 +66,7 @@ clean:
 fclean: clean
 	@ $(RM) $(NAME)
 	@ cd libft && make fclean
+	@ cd minilibx-linux && make clean
 	@ $(FCLEANED)
 		
 re:	fclean all
