@@ -13,9 +13,9 @@
 NAME = fractol
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g
+
 LIBFT = ./libft/libft.a
-MLXFLAGS = -L ./minilibx-linux -lmlx -Ilmlx -lXext -lX11
+MLXFLAGS = -L ./minilibx-linux -Wall -Werror -Wextra -g -lmlx -Ilmlx -lXext -lX11
 RM = rm -rf
 
 SRC = main.c \
@@ -53,7 +53,7 @@ all: compilation_start $(NAME)
 $(NAME): $(OBJS_FILES)
 	$(MAKE) --no-print-directory -C ./libft
 	$(MAKE) --no-print-directory -C ./minilibx-linux
-	$(CC) $(SRC) $(LIBFT) $(CFLAGS) $(MLXFLAGS) -o $(NAME)
+	$(CC) $(SRC) $(LIBFT) $(MLXFLAGS) -o $(NAME)
 	@ $(FRACTOL_READY)
 
 compilation_start:
