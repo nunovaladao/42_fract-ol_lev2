@@ -3,18 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nuno <nuno@student.42.fr>                  +#+  +:+       +#+         #
+#    By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 17:52:53 by nsoares-          #+#    #+#              #
-#    Updated: 2023/04/28 18:44:12 by nuno             ###   ########.fr        #
+#    Updated: 2023/04/29 19:40:03 by nsoares-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 
 CC = cc
-CFLAGS = -L ./minilibx-linux -Wall -Werror -Wextra -g -lmlx -Ilmlx -lXext -lX11
+CFLAGS = -Wall -Werror -Wextra -g
 LIBFT = ./libft/libft.a
+MLXFLAGS = -L ./minilibx-linux -lmlx -Ilmlx -lXext -lX11
 RM = rm -rf
 
 SRC = main.c \
@@ -52,7 +53,7 @@ all: compilation_start $(NAME)
 $(NAME): $(OBJS_FILES)
 	$(MAKE) --no-print-directory -C ./libft
 	$(MAKE) --no-print-directory -C ./minilibx-linux
-	$(CC) $(SRC) $(LIBFT) $(CFLAGS) -o $(NAME)
+	$(CC) $(SRC) $(LIBFT) $(CFLAGS) $(MLXFLAGS) -o $(NAME)
 	@ $(FRACTOL_READY)
 
 compilation_start:

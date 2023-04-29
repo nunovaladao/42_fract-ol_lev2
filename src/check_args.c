@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:24:27 by nuno              #+#    #+#             */
-/*   Updated: 2023/04/27 11:37:54 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/04/29 20:08:13 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,8 @@ void	check_args(int ac, char **av)
 	else if (ac == 4)
 		check_julia(ac, av);
 	else
-		return (display_mensg(0));
+	{
+		ft_printf("Try again! Check and put the right 'arg' values!\n\n");
+		display_mensg(0);
+	}
 }
