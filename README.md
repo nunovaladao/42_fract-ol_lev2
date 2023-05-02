@@ -54,7 +54,7 @@ Fractal options:
   - Julia
   - Mandelbrot
 ```
-## Mandelbrot
+## Fractal - Mandelbrot
 To run the fractal `Mandelbrot`:
 ```bash
 ./fractol Mandelbrot  
@@ -63,7 +63,7 @@ To run the fractal `Mandelbrot`:
 Output:
 ![Mandelbrot](https://github.com/nunovaladao/42_fract-ol_lev2/blob/main/extras/Screenshot_Mandel.png)
 
-## Julia
+## Fractal - Julia
 To run the fractal `Julia`:
 ```bash
 ./fractol Julia  
