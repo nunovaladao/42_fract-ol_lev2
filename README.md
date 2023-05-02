@@ -26,7 +26,7 @@ or
 cd fract-ol_mac
 ```
 
-4. Inside the folder you chose, compile the program by running, if you need to give permissions to the minilibx library, just go into the folder and do `chmod 777 ./configure!
+4. Inside the folder you chose, compile the program by running, if you need to give permissions to the minilibx library, just go into the folder and do `chmod 777 ./configure`!
 ```bash
 make
 ```
