@@ -81,7 +81,7 @@ Example usage:
 
 Output:
 
-![Julia](https://github.com/nunovaladao/42_fract-ol_lev2/blob/main/extras/Screenshot_Mandel.png)
+![Julia](https://github.com/nunovaladao/42_fract-ol_lev2/blob/main/extras/Sreenshot_Julia.png)
 
 ## Conclusion
 After completing the fractal project at 42, I was able to improve my programming skills in C and enhance my understanding of the mathematics behind generating fractals. I learned how to use graphic libraries to represent these complex geometric figures and explore different techniques to create impressive fractals. This project was a valuable opportunity to enhance my problem-solving skills and challenge myself at a more advanced level of programming. Overall, I am pleased with the final result of the project and excited to apply the knowledge gained to future projects.
